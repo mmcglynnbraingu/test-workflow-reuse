@@ -5,3 +5,4 @@ runs:
   steps:
     - name: First statement
       run: echo "This is the first"
+      shell: bash
