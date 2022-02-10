@@ -11,8 +11,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/reuse.yml@main
     steps:
       - uses: actions/checkout@v2
+      - name: Deploy first part (composite)
+        uses: ./.github/actions/reuse
       - name: Second part
         run: echo "This is second"
