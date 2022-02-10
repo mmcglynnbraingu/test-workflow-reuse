@@ -1,0 +1,7 @@
+name: "Reuse Action"
+
+runs:
+  using: "composite"
+  steps:
+    - name: First statement
+      run: echo "This is the first"
