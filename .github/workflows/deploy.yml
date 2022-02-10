@@ -1,0 +1,16 @@
+name: Deploy reusable
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    steps:
+      - name: Reusable part
+        uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/reuse.yml@main
+        with:
+          runs-on: [self-hosted]
+      - name: Second part
+        run: echo "This is second"
