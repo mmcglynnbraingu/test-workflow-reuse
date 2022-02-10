@@ -14,6 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy first part (composite)
-        uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse
+        uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
       - name: Second part
         run: echo "This is second"
