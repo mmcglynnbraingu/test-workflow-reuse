@@ -3,14 +3,16 @@ name: Deploy reusable
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/reuse.yml@main
     steps:
       - uses: actions/checkout@v2
-      - name: Reusable part
-        uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/reuse.yml@main
       - name: Second part
         run: echo "This is second"
