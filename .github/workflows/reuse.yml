@@ -6,6 +6,7 @@ on:
 jobs:
   reuse:
     name: Echo statement to be reused
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: First statement

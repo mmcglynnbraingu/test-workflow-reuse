@@ -3,11 +3,13 @@ name: Deploy reusable
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Reusable part
         uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/reuse.yml@main
       - name: Second part
