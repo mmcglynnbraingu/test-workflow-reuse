@@ -2,17 +2,11 @@ name: Reuse
 
 on:
   workflow_call:
-    inputs:
-      runs-on:
-        description: Platform to execute on
-        type: string
-        default: [self-hosted]
-
 
 jobs:
   reuse:
     name: Echo statement to be reused
-    runs-on: ${{ inputs.runs-on }}
     steps:
+      - uses: actions/checkout@v2
       - name: First statement
         run: echo "This is the first"
