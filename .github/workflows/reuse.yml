@@ -35,26 +35,28 @@ jobs:
       envName: "sandbox"
   
   test:
-    if: github.event.ref == 'refs/heads/main'
+    if: github.event.inputs.releaseType == 'test'
     needs: sandbox
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "test"
 
   govTest:
-    if: github.event.ref == 'refs/heads/main'
+    if: github.event.inputs.releaseType == 'govTest'
     needs: sandbox
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "govTest"
 
   prod:
+    if: github.event.inputs.releaseType == 'prod'
     needs: test
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "prod"
 
   govProd:
+    if: github.event.inputs.releaseType == 'govProd'
     needs: govTest
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
