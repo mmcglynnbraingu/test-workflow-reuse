@@ -30,7 +30,7 @@ on:
 jobs:
   sandbox:
     if: github.event_name == 'pull_request'
-    uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/workflow/deploy.yml
+    uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/workflow/deploy.yml@test-setting-environments
     with:
       envName: "sandbox"
   
