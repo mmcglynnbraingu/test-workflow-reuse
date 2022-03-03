@@ -34,28 +34,28 @@ jobs:
       envName: "sandbox"
   
   test:
-    if: github.event.inputs.releaseType == 'test'
+    if: github.event.inputs.releaseType == 'test' || github.event.inputs.releaseType == 'prod'
     needs: sandbox
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "test"
 
   govTest:
-    if: github.event.inputs.releaseType == 'govTest'
+    if: github.event.inputs.releaseType == 'govTest' || github.event.inputs.releaseType == 'govProd'
     needs: sandbox
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "govTest"
 
   prod:
-    if: github.event.inputs.releaseType == 'prod' || github.events.inputs.releaseType == 'test'
+    if: github.event.inputs.releaseType == 'prod'
     needs: test
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "prod"
 
   govProd:
-    if: github.event.inputs.releaseType == 'govProd' || github.events.inputs.releaseType == 'govTest'
+    if: github.event.inputs.releaseType == 'govProd'
     needs: govTest
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
