@@ -29,7 +29,7 @@ on:
 
 jobs:
   sandbox:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event.ref == 'refs/heads/main'
     uses: mmcglynnbraingu/test-workflow-reuse/.github/workflows/deploy.yml@main
     with:
       envName: "sandbox"
