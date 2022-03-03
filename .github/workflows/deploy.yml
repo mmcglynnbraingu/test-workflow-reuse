@@ -1,19 +1,30 @@
-name: Deploy reusable
+name: Deploy
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  workflow_dispatch:
+  #required for a reusable workflow
+  workflow_call:
+    inputs:
+      envName:
+        description: "The environment to deploy to"
+        required: true
+        default: "sandbox"
+        type: string
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
+    environment: ${{ inputs.envName }}
     steps:
       - uses: actions/checkout@v2
       - name: Deploy first part (composite)
         uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
       - name: Second part
         run: echo "This is second"
+
+  sayMessage:
+    runs-on: [self-hosted]
+    environment: ${{ inputs.envName }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: End of job
+        run: echo "The deployment to this environment has finished"
