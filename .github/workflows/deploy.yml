@@ -25,7 +25,7 @@ jobs:
         with:
           branch: replace($GIT_BRANCH, '/', '-')
       - name: Second part
-        run: echo replace($GIT_BRANCH, '/', '-')
+        run: echo 'This is the second part'
 
   sayMessage:
     runs-on: ubuntu-latest
