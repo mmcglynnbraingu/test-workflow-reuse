@@ -23,9 +23,9 @@ jobs:
       - name: Deploy first part (composite)
         uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
         with:
-          branch: $[replace($GIT_BRANCH, '/', '-')]
+          branch: replace($GIT_BRANCH, '/', '-')
       - name: Second part
-        run: echo $[replace($GIT_BRANCH, '/', '-')]
+        run: echo replace($GIT_BRANCH, '/', '-')
 
   sayMessage:
     runs-on: ubuntu-latest
