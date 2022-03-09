@@ -7,7 +7,5 @@ runs:
   using: "composite"
   steps:
     - name: First statement
-      run: |
-        echo "This is the first"
-        echo ${{ inputs.branch }}
+      run: echo "This is the first" ${{ inputs.branch }}
       shell: bash
