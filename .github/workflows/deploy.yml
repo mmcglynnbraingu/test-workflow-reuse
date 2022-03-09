@@ -16,6 +16,10 @@ jobs:
     environment: ${{ inputs.envName }}
     steps:
       - uses: actions/checkout@v2
+      - name: set environment variables
+        run: |
+          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          echo "GIT_BRANCH=${GIT_BRANCH}" >> ${GITHUB_ENV}
       - name: Deploy first part (composite)
         uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
         with:
