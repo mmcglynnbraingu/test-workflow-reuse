@@ -1,8 +1,13 @@
 name: "Reuse Action"
+inputs:
+  branch:
+    required: true
 
 runs:
   using: "composite"
   steps:
     - name: First statement
-      run: echo "This is the first"
+      run: |
+        echo "This is the first"
+        echo ${{ inputs.branch }}
       shell: bash
