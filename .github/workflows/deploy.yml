@@ -23,7 +23,7 @@ jobs:
       - name: Deploy first part (composite)
         uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
         with:
-          branch: $GIT_BRANCH
+          branch: $[replace(variables['GIT_BRANCH'], '/', '-')]
       - name: Second part
         run: echo 'This is second'
 
