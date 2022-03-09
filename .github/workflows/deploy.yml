@@ -19,7 +19,7 @@ jobs:
       - name: Deploy first part (composite)
         uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
       - name: Second part
-        run: echo "This is second"
+        run: echo $GIT_BRANCH
 
   sayMessage:
     runs-on: ubuntu-latest
