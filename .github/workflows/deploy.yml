@@ -25,7 +25,7 @@ jobs:
         with:
           branch: $[replace(variables['GIT_BRANCH'], '/', '-')]
       - name: Second part
-        run: echo 'This is second'
+        run: echo $[replace(variables['GIT_BRANCH'], '/', '-')]
 
   sayMessage:
     runs-on: ubuntu-latest
