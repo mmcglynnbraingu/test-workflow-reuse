@@ -19,11 +19,12 @@ jobs:
       - name: set environment variables
         run: |
           GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          echo "GIT_BRANCH=${GIT_BRANCH}" >> ${GITHUB_ENV}
+          GIT_BRANCH_FIXED=replace($GIT_BRANCH, '/', '-')
+          echo "GIT_BRANCH_FIXED=${GIT_BRANCH_FIXED}" >> ${GITHUB_ENV}
       - name: Deploy first part (composite)
         uses: mmcglynnbraingu/test-workflow-reuse/.github/actions/reuse@main
         with:
-          branch: replace($GIT_BRANCH, '/', '-')
+          branch: GIT_BRANCH_FIXED
       - name: Second part
         run: echo 'This is the second part'
 
